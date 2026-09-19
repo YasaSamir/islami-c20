@@ -36,9 +36,9 @@ class _SebhaWidgetState extends State<SebhaWidget> {
             ),
           ),
           Positioned(
-            left: 25,
-            right: 0,
-            top: -60,
+            left: 25.w,
+            right: 0.w,
+            top: -60.h,
 
             child: Image.asset(AppAssets.markGroupImg,scale: 4),
           ),
