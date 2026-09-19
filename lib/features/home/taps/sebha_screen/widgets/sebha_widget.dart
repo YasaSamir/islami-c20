@@ -1,29 +1,28 @@
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/constants/app_colors.dart';
 
 class SebhaWidget extends StatefulWidget {
-  const SebhaWidget({super.key, required this.currnetCounter});
-
+  const SebhaWidget({super.key, required this.currnetCounter,required this.title});
   final double currnetCounter;
+  final String title;
 
   @override
   State<SebhaWidget> createState() => _SebhaWidgetState();
 }
 
 class _SebhaWidgetState extends State<SebhaWidget> {
-  static const int _beadsCount = 30;
+  static const int _beadsCount = 33;
 
   @override
   Widget build(BuildContext context) {
     final double rotation =
-        (widget.currnetCounter % _beadsCount) * (2 * math.pi / _beadsCount);
+        (widget.currnetCounter % _beadsCount) * ( math.pi / _beadsCount);
     return SizedBox(
-      width: 320,
-      height: 320,
+      width: 320.w,
+      height: 320.h,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -32,6 +31,51 @@ class _SebhaWidgetState extends State<SebhaWidget> {
             child: Stack(
               alignment: Alignment.center,
               children: [
+                Image.asset(AppAssets.sebhabodyImg),
+              ],
+            ),
+          ),
+          Positioned(
+            left: 25,
+            right: 0,
+            top: -60,
+
+            child: Image.asset(AppAssets.markGroupImg,scale: 4),
+          ),
+          Positioned(
+            child: RichText(
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: widget.title ,
+                    style: TextStyle(
+                      fontSize: 36.sp,
+                      color: AppColors.whiteColor,
+                      fontFamily: 'Janna LT',
+                    ),
+                  ),
+                  TextSpan(
+                    text: widget.currnetCounter.toStringAsFixed(0),
+                    style: TextStyle(
+                      fontSize: 36.sp,
+                      color: AppColors.whiteColor,
+                      fontFamily: 'Janna LT',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/*
+ best
                 ...List.generate(_beadsCount, (i) {
                   final angle = (i * 2 * math.pi / _beadsCount) - (math.pi / 2);
                   final x = 150 * math.cos(angle);
@@ -53,37 +97,5 @@ class _SebhaWidgetState extends State<SebhaWidget> {
                     ),
                   );
                 }),
-              ],
-            ),
-          ),
-          Positioned(
-            child: RichText(
-              textAlign: TextAlign.center,
-              textDirection: TextDirection.rtl,
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'سبحان الله\n',
-                    style: TextStyle(
-                      fontSize: 36,
-                      color: AppColors.whiteColor,
-                      fontFamily: 'Janna LT',
-                    ),
-                  ),
-                  TextSpan(
-                    text: widget.currnetCounter.toStringAsFixed(0),
-                    style: TextStyle(
-                      fontSize: 36,
-                      color: AppColors.whiteColor,
-                      fontFamily: 'Janna LT',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+
+ */

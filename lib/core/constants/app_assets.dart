@@ -26,6 +26,8 @@ class AppAssets {
   static const String rightCornerImg = '$_baseUrlImg/img_right_corner.png';
   static const String vectorImg = '$_baseUrlImg/Vector.png';
   static const String markGroupImg = '$_baseUrlImg/Maskgroup.png';
+  static const String sebhaImg = '$_baseUrlImg/Sebha.png';
+  static const String sebhabodyImg = '$_baseUrlImg/sebha_body.png';
 
 
 

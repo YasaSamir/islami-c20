@@ -16,6 +16,7 @@ class SebhaScreen extends StatefulWidget {
 
 class _SebhaScreenState extends State<SebhaScreen> {
   double counter = 0;
+  String title = 'سبحان الله\n';
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +53,17 @@ class _SebhaScreenState extends State<SebhaScreen> {
                     if (counter >= 30) {
                       counter = 0;
                     }
+                    final cycle = counter % 3;
+                    if (cycle == 0) {
+                      title = 'سبحان الله\n';
+                    } else if (cycle == 1) {
+                      title = 'الحمد لله\n';
+                    } else {
+                      title = 'الله اكبر\n';
+                    }
                   });
                 },
-                child: SebhaWidget(currnetCounter: counter),
+                child: SebhaWidget(currnetCounter: counter, title: title),
               ),
             ),
           ],
