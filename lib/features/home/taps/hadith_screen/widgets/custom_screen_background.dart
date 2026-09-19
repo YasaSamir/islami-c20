@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/app_assets.dart';
+import '../../../../../../core/constants/app_assets.dart';
 
 class CustomScreenBackground extends StatelessWidget {
   const CustomScreenBackground({super.key});
@@ -30,14 +30,14 @@ class CustomScreenBackground extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.topCenter,   // Start at the top
-                end: Alignment.bottomCenter,  // End at the bottom
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
                 colors: [
-                  Colors.transparent,         // Completely visible at the top
-                  Colors.transparent,         // Keep it visible through the middle
-                  Colors.black,               // Fully fades to black at the bottom
+                  Colors.transparent,
+                  Colors.transparent,
+                  Colors.black,
                 ],
-                stops: [0.0, 0.2, 1.0],       // Adjust 0.5 to make the fade start higher or lower
+                stops: [0.0, 0.2, 1.0],
               ),
             ),
           ),

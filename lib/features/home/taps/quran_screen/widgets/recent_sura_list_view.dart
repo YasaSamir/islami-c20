@@ -1,26 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c20/features/home/taps/quran_screen/recent_sura_card.dart';
-
-import '../../../../../core/constants/app_assets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_c20/core/constants/app_colors.dart';
+import 'package:islami_c20/core/theme/custom_text_style.dart';
+import 'package:islami_c20/features/home/taps/quran_screen/widgets/recent_sura_card.dart';
+import '../model/sura_model.dart';
 
 class RecentSuraListView extends StatelessWidget {
-  const RecentSuraListView ({super.key});
+  const RecentSuraListView({super.key, required this.suraModels});
+
+  final List<SuraModel> suraModels;
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-      height: 150, // Match the height shown in your image (150)
+    return SizedBox(
+      height: 150.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: 5, // Example count
+        itemCount: suraModels.isEmpty?1:suraModels.length,
         separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
-          return const RecentSuraCard(
-            englishTitle: 'English Title',
-            arabicTitle: 'Arabic Title',
-            imageUrl: AppAssets.quranSuraImg,
-            versesCount: 100,
-          );
+          return suraModels.isEmpty
+              ? Center(
+                  child: Text(
+                    "No recent suras",
+                    style: CustomTextStyle.headingStyle.copyWith(
+                      color: AppColors.whiteColor,
+                      fontSize: 22,
+                    ),
+                  ),
+                )
+              : RecentSuraCard(suraModel: suraModels[index]);
         },
       ),
     );

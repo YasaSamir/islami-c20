@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:islami_c20/features/home/presentation/screens/hadith_screen/hadith_screen.dart';
-import '../../../core/constants/app_assets.dart';
-import '../../../core/constants/app_colors.dart';
-import 'screens/quran_screen/quran_screen.dart';
+import 'package:islami_c20/features/home/taps/hadith_screen/hadith_screen.dart';
+import 'package:islami_c20/features/home/taps/quran_screen/quran_screen.dart';
+import 'package:islami_c20/features/home/taps/sebha_screen/sebha_screen.dart';
+import '../../core/constants/app_assets.dart';
+import '../../core/constants/app_colors.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomeScreen> createState() => _homeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _homeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    const HomeScreen(),
+     QuranScreen(),
     const HadithScreen(),
-    const Center(
-      child: Text(
-        'Sebha Page',
-        style: TextStyle(color: Colors.white, fontSize: 24),
-      ),
-    ),
+    const SebhaScreen(),
     const Center(
       child: Text(
         'Radio Page',
@@ -81,7 +77,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
   BottomNavigationBarItem _buildNavItem(
     String iconPath,
     String label,
@@ -102,14 +97,12 @@ class _MainScreenState extends State<MainScreen> {
         color: isSelected ? AppColors.whiteColor : AppColors.blackColor,
       ),
     );
-
     return BottomNavigationBarItem(
       icon: iconWidget,
       activeIcon: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
         decoration: BoxDecoration(
-          color: const Color(0xFF212121).withOpacity(0.6),
-          // Dark pill background
+          color: const Color(0xFF212121).withValues(alpha: 0.6),
           borderRadius: BorderRadius.circular(20),
         ),
         child: iconWidget,

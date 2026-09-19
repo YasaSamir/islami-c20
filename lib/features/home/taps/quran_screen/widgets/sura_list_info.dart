@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:islami_c20/features/home/taps/quran_screen/model/sura_model.dart';
 
-import '../../../../../core/constants/app_assets.dart';
-import '../../../../../core/theme/custom_text_style.dart';
+import '../../../../../../core/constants/app_assets.dart';
+import '../../../../../../core/theme/custom_text_style.dart';
 class SuraListInfo extends StatelessWidget {
-  // Add these variables to make the widget reusable
-  final String suraNumber;
-  final String suraEnName;
-  final String suraArName;
-  final String versesCount;
-
   const SuraListInfo({
-    super.key,
-    required this.suraNumber,
-    required this.suraEnName,
-    required this.suraArName,
-    required this.versesCount,
+    super.key, required this.suraModel,
   });
+  final SuraModel suraModel;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +19,12 @@ class SuraListInfo extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Image.asset(
-                AppAssets.starImg, // Change from hadithBgImg to your star asset
+                AppAssets.starImg,
                 width: 50,
                 height: 50,
               ),
               Text(
-                suraNumber,
+                suraModel.number.toString(),
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -42,18 +34,18 @@ class SuraListInfo extends StatelessWidget {
             ],
           ),
           title: Text(
-            suraEnName,
+            suraModel.englishName,
             style: CustomTextStyle.headingStyle.copyWith(
               fontSize: 18,
               color: Colors.white,
             ),
           ),
           subtitle: Text(
-            '$versesCount Verses',
+            '${suraModel.verses} Verses',
             style: const TextStyle(color: Colors.white, fontSize: 14),
           ),
           trailing: Text(
-            suraArName,
+            suraModel.arabicName,
             style: CustomTextStyle.headingStyle.copyWith(
               fontSize: 18,
               color: Colors.white,

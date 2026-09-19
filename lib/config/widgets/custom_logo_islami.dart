@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/constants/app_assets.dart';
 import '../../core/constants/app_colors.dart';
@@ -8,26 +9,29 @@ class CustomLogoIslami extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Image.asset(AppAssets.mosqueImg, width: 350),
+    return Padding(
+      padding: EdgeInsets.only(top: 30.h),
+      child:Center(
+        child: Container(
+          width: 300.w,
+          height: 166.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            image: DecorationImage(
+              image: AssetImage(AppAssets.mosqueImg),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 130),
+          child: Align(
+            alignment: Alignment.center, // or Alignment.centerRight, Alignment.centerLeft
             child: Image.asset(
               AppAssets.islamiImg,
               color: AppColors.goldColor,
-              width: 166,
-
+              width: 170.w,
             ),
           ),
         ),
-      ],
+      )
     );
   }
 }

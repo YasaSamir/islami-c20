@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_c20/features/home/taps/quran_screen/model/sura_model.dart';
 
-import '../../../../../core/constants/app_assets.dart';
-import '../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/constants/app_assets.dart';
+import '../../../../../../core/constants/app_colors.dart';
 
 class RecentSuraCard extends StatelessWidget {
-  const RecentSuraCard({
-    super.key,
-    required this.englishTitle,
-    required this.arabicTitle,
-    required this.imageUrl,
-    required this.versesCount,
-    this.textColor = Colors.black,
-  });
+  const RecentSuraCard({super.key, required this.suraModel,});
 
-  final String englishTitle;
-  final String arabicTitle;
-  final String imageUrl;
-  final int versesCount;
-  final Color textColor ;
+  final SuraModel suraModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 280, // Approximate width from your image
+      width: 280.w,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AppColors.goldColor,
@@ -35,28 +26,28 @@ class RecentSuraCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                englishTitle,
+                suraModel.englishName,
                 style: TextStyle(
-                  color: textColor,
+                  color: AppColors.blackColor,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                arabicTitle,
+                suraModel.arabicName,
                 style: TextStyle(
-                  color: textColor,
+                  color: AppColors.blackColor,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                "$versesCount Verses",
-                style: TextStyle(color: textColor, fontSize: 14),
+                "${suraModel.verses} Verses",
+                style: TextStyle(color: AppColors.blackColor, fontSize: 14),
               ),
             ],
           ),
-          Expanded(child: Image.asset(imageUrl)), // The Quran/Lantern image
+          Expanded(child: Image.asset(AppAssets.quranSuraImg, )),
         ],
       ),
     );
